@@ -1363,7 +1363,7 @@ SFEN形式の例: 7nl/1R3sk2/5pppp/9/9/9/9/9/9 b GS 1
       : Object.entries(hand).filter(([_, count]) => (count as number) > 0);
 
     return (
-      <div className="flex flex-row flex-wrap gap-1 sm:gap-2 items-center justify-center">
+      <div className="flex flex-row flex-nowrap gap-1 sm:gap-2 items-center justify-center">
         {!isEditMode && pieces.length === 0 && <span className="text-amber-800/40 text-[10px] sm:text-sm italic py-2">なし</span>}
         {pieces.map(([kind, count]) => (
           <div key={kind} className="flex flex-col items-center gap-1">
@@ -1377,7 +1377,7 @@ SFEN形式の例: 7nl/1R3sk2/5pppp/9/9/9/9/9/9 b GS 1
                 transition-all duration-200
               `}
             >
-              <span className={`text-lg sm:text-2xl font-bold ${color === Color.White ? 'rotate-180 text-amber-900' : 'text-amber-950'} ${isEditMode && count === 0 ? 'opacity-30' : ''}`}>
+              <span className={`font-bold ${color === Color.White ? 'text-lg sm:text-2xl rotate-180 text-amber-900' : 'text-xl sm:text-2xl md:text-3xl text-amber-950'} ${isEditMode && count === 0 ? 'opacity-30' : ''}`}>
                 {PIECE_NAMES[kind as string] || kind}
               </span>
               {(count as number) > 1 && (
@@ -1386,7 +1386,7 @@ SFEN形式の例: 7nl/1R3sk2/5pppp/9/9/9/9/9/9 b GS 1
                 </span>
               )}
             </div>
-            {isEditMode && color === Color.Black && (
+            {isEditMode && (
               <div className="flex gap-1">
                 <button 
                   onClick={() => {
@@ -1625,10 +1625,10 @@ SFEN形式の例: 7nl/1R3sk2/5pppp/9/9/9/9/9/9 b GS 1
           <div className="w-full flex flex-col justify-center items-center gap-1 sm:gap-4">
             
             {/* Gote Hand (Top) */}
-            <div className="w-full max-w-full sm:max-w-[420px] flex flex-row px-0 sm:px-2">
-              <div className="w-full bg-amber-900/5 p-1 sm:p-3 rounded-lg sm:rounded-xl border border-amber-900/10 min-h-[40px] flex flex-row items-center gap-2 sm:gap-4">
-                <h3 className="text-xs sm:text-sm font-bold text-amber-900/60 whitespace-nowrap ml-1 sm:ml-0">後手</h3>
-                <div className="flex-1 flex flex-row justify-start flex-wrap">
+            <div className="w-full max-w-full sm:max-w-[500px] flex flex-row px-0 sm:px-2">
+              <div className="w-full bg-amber-900/5 p-1 sm:p-3 rounded-lg sm:rounded-xl border border-amber-900/10 min-h-[40px] flex flex-row items-center gap-2 sm:gap-4 flex-nowrap">
+                <h3 className="text-xs sm:text-sm font-bold text-amber-900/60 whitespace-nowrap ml-1 sm:ml-0 flex-shrink-0">後手</h3>
+                <div className="flex-1 flex flex-row justify-start flex-nowrap lg:justify-center">
                   {renderHand(Color.White)}
                 </div>
               </div>
@@ -1665,10 +1665,10 @@ SFEN形式の例: 7nl/1R3sk2/5pppp/9/9/9/9/9/9 b GS 1
             </div>
 
             {/* Sente Hand (Bottom) */}
-            <div className="w-full max-w-full sm:max-w-[420px] flex flex-row px-0 sm:px-2">
-              <div className="w-full bg-amber-900/5 p-1 sm:p-3 rounded-lg sm:rounded-xl border border-amber-900/10 min-h-[40px] flex flex-row items-center gap-2 sm:gap-4">
-                <h3 className="text-xs sm:text-sm font-bold text-amber-900/60 whitespace-nowrap ml-1 sm:ml-0">先手</h3>
-                <div className="flex-1 flex flex-row justify-start flex-wrap">
+            <div className="w-full max-w-full sm:max-w-[500px] flex flex-row px-0 sm:px-2">
+              <div className="w-full bg-amber-900/5 p-1 sm:p-3 rounded-lg sm:rounded-xl border border-amber-900/10 min-h-[40px] flex flex-row items-center gap-2 sm:gap-4 flex-nowrap">
+                <h3 className="text-xs sm:text-sm font-bold text-amber-900/60 whitespace-nowrap ml-1 sm:ml-0 flex-shrink-0">先手</h3>
+                <div className="flex-1 flex flex-row justify-center flex-nowrap">
                   {renderHand(Color.Black)}
                 </div>
               </div>
